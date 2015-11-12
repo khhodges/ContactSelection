@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+<body>
+    
+    <div id="all-contacts" data-role="view" data-title="My Contacts" data-show="window.getAllContacts">
+        <header data-role="header">
+            <div data-role="navbar">
+                <div data-role="view-title"></div>
+            </div>
+        </header>
+        <ul id="contacts-list" data-role="listview"></ul>
+    </div>
+    
+    <div id="view-contact" data-role="view" data-title="Contact Details">
+        <header data-role="header">
+            <div data-role="navbar">
+                <a data-align="left" data-role="backbutton">Back</a>
+                <div data-role="view-title"></div>
+            </div>
+        </header>
+        <h2 id="contact-name"></h2>
+        <h4 id="contact-phone"></h4>
+    </div>
+    
+</body>
+</html>

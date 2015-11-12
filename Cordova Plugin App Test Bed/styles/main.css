@@ -1,0 +1,26 @@
+.expand {
+    padding: 0 100% 100% 0;
+    text-decoration: none;
+}
+
+.smallProfile {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.largeProfile {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+#update-photo {
+    width: 99%;
+}
