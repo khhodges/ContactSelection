@@ -4,14 +4,6 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.common.min.css">
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.rtl.min.css">
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.default.min.css">
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.dataviz.min.css">
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.dataviz.default.min.css">
-        <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.3.1111/styles/kendo.mobile.all.min.css">
-
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js"></script>
         <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
@@ -25,17 +17,13 @@
         <div id="all-contacts" data-role="view" data-title="My Contacts">
             <header data-role="header">
                 <div data-role="navbar">
-                    <a data-align="left" href="#all-contacts" data-role="button">Home</a>
+                    <a data-align="right" data-role="button" onclick="window.clear()">Clear</a>
                     <div data-role="view-title"></div>
-                    <a data-align="right" href="#new-contact" data-role="button">New</a>
+                    <a data-align="left" href="#back" data-role="button">Back</a>
                 </div>
             </header>
             <div class="content">
                 <div id="home" data-role="view">
-                    <div id="collapsible" data-role="collapsible" data-animation="false">
-                        <h2>Header</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed purus sed orci aliquet dapibus.</p>
-                    </div>
                 </div>
                 <div class="inset">
                     <input id="searchText" />
@@ -43,7 +31,12 @@
                 </div>
                 <div id="result" type="text" readonly="readonly"></div>
             </div>
-            <ul id="contacts-list" ></ul>
+            <div id="collapsible" data-role="collapsible" data-animation="true">
+                <h2>Help</h2>
+                <p>Enter any letters in the contact name to search for a list of contact and pick the one you wish to use.</p>
+            </div>
+
+            <div id="contacts-list" ></div>
         </div>
         <div id="new-contact" data-role="view" data-title="New Contact">
             <header data-role="header">
@@ -64,33 +57,28 @@
                 <div data-role="navbar">
                     <a data-align="left" href="#all-contacts" data-role="button">Cancel</a>
                     <div data-role="view-title">
-                        <a data-align="right" href="#new-contact" data-role="button">Edit</a>
+                        <a data-align="right" href="#new-contact" data-role="button">Use</a>
                     </div>
                 </div>
             </header>
             <img class="largeProfile" />
             <h2 id="contact-name"></h2>
+            <h4 id="contact-address"></h4>
             <h4 id="contact-phone"></h4>
-            <h4 id="contact-phone"></h4>
-            <h4 id="contact-phone"></h4>
+            <h4 id="contact-email"></h4>
             <button id="update-photo" data-role="button" onclick="window.updatePhoto()">Update Photo</button>
         </div>
         <script id="contacts-template" type="text/x-kendo-template">
-            <div data-role="collapsible" data-collapsed="true" data-collapse-icon="arrow-up" data-expand-icon="arrow-down">
-                <h3># if (photos && photos.length) { #
-                <img class="smallProfile" src="${photos[0].value}" /> # } else {
-                # <img class="smallProfile" src="styles/blankProfile.png" /> # } # # if (name.givenName) {
-                # ${name.givenName} # } # # if (name.familyName) {
-                # ${name.familyName} # } # </h3>
-                <p># if (phoneNumbers && phoneNumbers.length) {
-                    #
-                ${phoneNumbers[0].value} # } # # if (addresses && addresses.length) { #
-                    <br/>
-                    <a href="\#view-contact?id=${id}&familyName=${name.familyName}">
-                        ${addresses[0].formatted}
-                </a> # } # # if (emails && emails.length) { #
-                <br/> ${emails[0].value} # } #</p>
+
+            <div id="x">
+                <lu>
+                    <li>
+                        <a class="button" href = "\#view-contact?id=${id}&familyName=${name.familyName}" >#= name.givenName # #= name.familyName #</a>
+                    </li>
+                </lu>
+
             </div>
+            
         </script>
     </body>
 

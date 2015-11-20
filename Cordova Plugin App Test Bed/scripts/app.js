@@ -1,13 +1,12 @@
 (function () {
-
     var app, selectedContact, selectedContactId;
 
     document.addEventListener('deviceready', function () {
         navigator.splashscreen.hide();
         app = new kendo.mobile.Application(document.body, {
-            skin: 'flat',
-            transition: 'zoom'
-        });
+                                               skin: 'flat',
+                                               transition: 'zoom'
+                                           });
     }, false);
 
     function onError() {
@@ -16,23 +15,26 @@
 
     // Handles iOS not returning displayName or returning null
     function getName(c) {
-        if (c.name.formatted) return c.name.formatted;
-        if (c.name.givenName && c.name.familyName) return c.name.givenName + " " + c.name.familyName;
+        if (c.name.formatted)
+            return c.name.formatted;
+        if (c.name.givenName && c.name.familyName)
+            return c.name.givenName + " " + c.name.familyName;
         return "No Name Listed";
     }
     window.getAllContacts = function () {
         var options = new ContactFindOptions();
         options.filter = document.getElementById("searchText").value;       
         options.multiple = true;
-        var fields =["displayName","name","nickname","emails"];         // Search for the filter name, allowing multiple matches.
+        var fields = ["displayName","name","nickname","emails"];         // Search for the filter name, allowing multiple matches.
         navigator.contacts.find(fields, onContactSuccess, onError, options);
     }
 
     function onContactSuccess(contacts) {
         var template = kendo.template($("#contacts-template").html());
         var dataSource = new kendo.data.DataSource({
-            data: contacts
-        });
+                                                       data: contacts
+                                                   });
+        app.theContacts = contacts;
         dataSource.bind("change", function () {
             $("#contacts-list").html(kendo.render(template, dataSource.view()));
         });
@@ -40,11 +42,7 @@
     }
     window.getContactDetails = function (e) {
         selectedContactId = e.view.params.id;
-        var options = new ContactFindOptions();
-        options.filter = document.getElementById("searchText").value;
-        options.multiple = true;
-        var fields = ["displayName","name","nickname","emails"];
-        navigator.contacts.find(fields, onContactDetailSuccess, onError, null);
+        onContactDetailSuccess(app.theContacts);
     }
 
     function onContactDetailSuccess(contacts) {
@@ -64,6 +62,18 @@
                     $(".largeProfile").attr("src", "styles/blankProfile.png");
                 }
 
+                if (contacts[i].addresses && contacts[i].addresses.length) {
+                    $("#contact-address").text(contacts[i].addresses[0].formatted);
+                } else {
+                    $("#contact-address").text("");
+                }
+                
+                if (contacts[i].emails && contacts[i].emails.length) {
+                    $("#contact-email").text(contacts[i].emails[0].value);
+                } else {
+                    $("#contact-email").text("");
+                }
+                
                 selectedContact = contacts[i];
 
                 break;
@@ -73,9 +83,14 @@
 
     window.updatePhoto = function () {
         navigator.camera.getPicture(onPhotoSuccess, onError, {
-            quality: 50,
-            destinationType: Camera.DestinationType.FILE_URI
-        });
+                                        quality: 50,
+                                        destinationType: Camera.DestinationType.FILE_URI
+                                    });
+    }
+    
+    window.clear = function() {
+        document.getElementById("searchText").value = "";
+        document.getElementById("contacts-list").InnerXml="";       
     }
 
     function onPhotoSuccess(imageURI) {
