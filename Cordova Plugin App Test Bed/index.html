@@ -4,6 +4,8 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
+
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="http://kendo.cdn.telerik.com/2015.3.1111/js/kendo.all.min.js"></script>
         <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
@@ -19,7 +21,7 @@
                 <div data-role="navbar">
                     <a data-align="right" data-role="button" onclick="window.clear()">Clear</a>
                     <div data-role="view-title"></div>
-                    <a data-align="left" href="#back" data-role="button">Back</a>
+                    <a data-align="left" href="#all-contacts" data-role="button">Back</a>
                 </div>
             </header>
             <div class="content">
@@ -57,7 +59,7 @@
                 <div data-role="navbar">
                     <a data-align="left" href="#all-contacts" data-role="button">Cancel</a>
                     <div data-role="view-title">
-                        <a data-align="right" href="#new-contact" data-role="button">Use</a>
+                        <a data-align="right" href="#all-contacts" data-role="button">Use</a>
                     </div>
                 </div>
             </header>
@@ -73,10 +75,34 @@
             <div id="x">
                 <lu>
                     <li>
-                        <a class="button" href = "\#view-contact?id=${id}&familyName=${name.familyName}" >#= name.givenName # #= name.familyName #</a>
+                        <a class="button" href = "\#view-contact?id=${id}&familyName=${name.familyName}" ><h2>#= name.givenName # #= name.familyName #</h2></a>
                     </li>
                 </lu>
 
+            <!--                <p>
+                <h3># if (photos && photos.length) { #
+                <img class = "smallProfile" src="${photos[0].value}" /> # } else {
+                # <img class = "smallProfile" src="styles/blankProfile.png" /> # } # # if (name.givenName) {
+                    # $ {
+                    name.givenName
+                } # } # # if (name.familyName) {
+                    # $ {
+                    name.familyName
+                } # } # </h3>
+                # if (phoneNumbers && phoneNumbers.length) {
+                    #
+                    $ {
+                    phoneNumbers[0].value
+                } # } # # if (addresses && addresses.length) { #
+                    <br/>
+                    <a href = "\#view-contact?id=${id}&familyName=${name.familyName}" >
+                    $ {
+                    addresses[0].formatted
+                    }
+                </a> # } # # if (emails && emails.length) { #
+                    <br/> $ {
+                    emails[0].value
+                } # } #</p>-->
             </div>
             
         </script>

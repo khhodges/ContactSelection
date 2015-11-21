@@ -25,7 +25,7 @@
         var options = new ContactFindOptions();
         options.filter = document.getElementById("searchText").value;       
         options.multiple = true;
-        var fields = ["displayName","name","nickname","emails"];         // Search for the filter name, allowing multiple matches.
+        var fields = ["displayName","name"];         // Search for the filter name, allowing multiple matches.
         navigator.contacts.find(fields, onContactSuccess, onError, options);
     }
 
@@ -88,9 +88,9 @@
                                     });
     }
     
-    window.clear = function() {
-        document.getElementById("searchText").value = "";
-        document.getElementById("contacts-list").InnerXml="";       
+    window.clear = function(){
+        document.getElementById("searchText").value="";
+        
     }
 
     function onPhotoSuccess(imageURI) {
