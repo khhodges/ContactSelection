@@ -90,7 +90,7 @@
     
     window.clear = function(){
         document.getElementById("searchText").value="";
-        
+        document.getElementById("contacts-list").innerHTML = "";
     }
 
     function onPhotoSuccess(imageURI) {
