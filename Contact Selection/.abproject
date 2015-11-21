@@ -1,0 +1,52 @@
+{
+  "ProjectName": "Contact Selection",
+  "ProjectGuid": "82fb0a71-eddf-4e3a-ab07-e58869f6e668",
+  "projectVersion": 1,
+  "AppIdentifier": "com.on2t.ContactSelection",
+  "DisplayName": "Cordova Plugin App Test Bed",
+  "Author": "Kenneth Hamer-Hodges",
+  "Description": "Contact Selection by On2T",
+  "BundleVersion": "1.2",
+  "AndroidVersionCode": "2",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "WP8TileTitle": "Select Contact",
+  "WP8Publisher": "On2T",
+  "WP8Capabilities": [],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{0482453c-bcf2-4da7-88cd-2e10f79bd6cb}",
+  "WP8ProductID": "{2a0cc233-bd9b-4068-a6cf-4f3f961d2628}",
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "CorePlugins": [
+    "nl.x-services.plugins.toast@2.2.1",
+    "org.apache.cordova.camera",
+    "org.apache.cordova.contacts",
+    "org.apache.cordova.device",
+    "org.apache.cordova.device-orientation",
+    "org.apache.cordova.media-capture",
+    "org.apache.cordova.splashscreen"
+  ],
+  "AndroidPermissions": [
+    "android.permission.CAMERA",
+    "android.permission.READ_CONTACTS"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "True",
+  "iOSStatusBarStyle": "Default",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "Framework": "Cordova",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8PackageIdentityName": "1234Telerik.com.telerik.CordovaPluginAppTestBed",
+  "CordovaPluginVariables": {}
+}
